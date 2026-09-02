@@ -4,7 +4,6 @@ import "sort"
 
 func fourSum(nums []int, target int) [][]int {
 	sort.Ints(nums)
-	var res [][]int
 
 	for i := 0; i < len(nums)-3; i++ {
 		if i > 0 && nums[i] == nums[i-1] {
