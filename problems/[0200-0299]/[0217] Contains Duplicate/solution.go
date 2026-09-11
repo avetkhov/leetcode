@@ -1,13 +1,13 @@
 package main
 
 func containsDuplicate(nums []int) bool {
-	d := map[int]int{}
-	var r []int
-	for i, num := range nums {
-		if _, found := d[num]; found {
-			return found
+	seen := make(map[int]struct{}, len(nums))
+
+	for _, num := range nums {
+		if _, ok := seen[num]; ok {
+			return true
 		}
-		d[num] = i
+		seen[num] = struct{}{}
 	}
 
 	return false
