@@ -1,12 +1,16 @@
 package main
 
 func moveZeroes(nums []int) {
-	k := 0
+	if len(nums) < 2 {
+		return
+	}
 
-	for i, x := range nums {
-		if x != 0 {
-			nums[i], nums[k] = nums[k], nums[i]
-			k++
+	left := 0
+
+	for right, num := range nums {
+		if num != 0 {
+			nums[left], nums[right] = nums[right], nums[left]
+			left++
 		}
 	}
 }

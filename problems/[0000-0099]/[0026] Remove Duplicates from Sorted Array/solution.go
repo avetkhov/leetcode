@@ -1,14 +1,18 @@
 package main
 
 func removeDuplicates(nums []int) int {
-	k := 0
+	if len(nums) == 0 {
+		return 0
+	}
 
-	for _, x := range nums {
-		if k == 0 || x != nums[k-1] {
-			nums[k] = x
-			k++
+	left := 0
+
+	for _, num := range nums {
+		if num != nums[left] {
+			left++
+			nums[left] = num
 		}
 	}
 
-	return k
+	return left + 1
 }

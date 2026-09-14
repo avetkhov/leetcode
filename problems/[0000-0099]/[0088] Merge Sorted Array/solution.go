@@ -1,13 +1,13 @@
 package main
 
 func merge(nums1 []int, m int, nums2 []int, n int) {
-	for i, j, k := m-1, n-1, m+n-1; j >= 0; k-- {
-		if i >= 0 && nums1[i] > nums2[j] {
-			nums1[k] = nums1[i]
-			i--
+	for left1, right2, right1 := m-1, n-1, m+n-1; right2 >= 0; right1-- {
+		if left1 >= 0 && nums1[left1] > nums2[right2] {
+			nums1[right1] = nums1[left1]
+			left1--
 		} else {
-			nums1[k] = nums2[j]
-			j--
+			nums1[right1] = nums2[right2]
+			right2--
 		}
 	}
 }
