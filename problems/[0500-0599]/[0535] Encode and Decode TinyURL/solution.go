@@ -1,19 +1,6 @@
 package main
 
-func twoSum(numbers []int, target int) []int {
-	left, right := 0, len(numbers)-1
-
-	for left < right {
-		sum := numbers[left] + numbers[right]
-
-		if sum > target {
-			right--
-		} else if sum < target {
-			left++
-		} else {
-			return []int{left + 1, right + 1}
-		}
-	}
-
-	return []int{-1, -1}
+func main() {
+	height := []int{1, 12, -5, -6, 50, 3}
+	findMaxAverage(height, 4)
 }

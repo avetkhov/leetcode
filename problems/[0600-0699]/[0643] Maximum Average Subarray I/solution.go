@@ -1,16 +1,17 @@
 package main
 
 func findMaxAverage(nums []int, k int) float64 {
-	sum := 0
+	currentSum := 0
 	for i := 0; i < k; i++ {
-		sum += nums[i]
+		currentSum += nums[i]
 	}
 
-	maxSum := sum
+	maxSum := currentSum
+
 	for i := k; i < len(nums); i++ {
-		sum += nums[i] - nums[i-k]
-		if sum > maxSum {
-			maxSum = sum
+		currentSum += nums[i] - nums[i-k]
+		if currentSum > maxSum {
+			maxSum = currentSum
 		}
 	}
 

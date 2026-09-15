@@ -1,22 +1,21 @@
 package main
 
 func maxArea(height []int) int {
-	s := 0
-	l, r := 0, len(height)-1
+	maxArea := 0
 
-	for l < r {
-		t := (r - l) * min(height[l], height[r])
-
-		if s < t {
-			s = t
+	left, right := 0, len(height)-1
+	for left < right {
+		curArea := min(height[left], height[right]) * (right - left)
+		if curArea > maxArea {
+			maxArea = curArea
 		}
 
-		if height[l] > height[r] {
-			r--
+		if height[left] > height[right] {
+			right--
 		} else {
-			l++
+			left++
 		}
 	}
 
-	return s
+	return maxArea
 }
