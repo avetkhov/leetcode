@@ -24,9 +24,3 @@ func characterReplacement(s string, k int) int {
 
 	return maxLength
 }
-
-func main() {
-	s := "AABABBA"
-	k := 1
-	characterReplacement(s, k)
-}
