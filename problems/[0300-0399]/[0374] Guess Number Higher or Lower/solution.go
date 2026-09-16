@@ -1,22 +1,23 @@
 package main
 
 func guessNumber(n int) int {
-	l, r := 1, n
+	left, right := 1, n
 
-	for l < r {
-		m := l + (r-l)/2
-		g := guess(m)
+	for left <= right {
+		mid := left + (right-left)/2
 
-		if g == 0 {
-			return m
+		answer := guess(mid)
+
+		if answer == 0 {
+			return mid
 		}
 
-		if g == -1 {
-			r = m
+		if answer == 1 {
+			left = mid + 1
 		} else {
-			l = m + 1
+			right = mid - 1
 		}
 	}
 
-	return l
+	return left
 }
