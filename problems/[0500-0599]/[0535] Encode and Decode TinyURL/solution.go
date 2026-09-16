@@ -1,32 +1,26 @@
 package main
 
-func characterReplacement(s string, k int) int {
-	seen := [26]int{}
+func search(nums []int, target int) int {
+	left, right := 0, len(nums)-1
 
-	maxLength, maxFreq := 0, 0
+	for left < right {
+		mid := left + (right-left)/2
 
-	for left, right := 0, 0; right < len(s); right++ {
-		seen[s[right]-'A']++
-
-		if seen[s[right]-'A'] > maxFreq {
-			maxFreq = seen[s[right]-'A']
+		if nums[mid] == target {
+			return mid
 		}
 
-		if right-left+1-maxFreq > k {
-			seen[s[left]-'A']--
-			left++
-		}
-
-		if maxLength < right-left+1 {
-			maxLength = right - left + 1
+		if nums[mid] < target {
+			left = mid + 1
+		} else {
+			right = mid - 1
 		}
 	}
 
-	return maxLength
+	return -1
 }
 
 func main() {
-	s := "AABABBA"
-	k := 1
-	characterReplacement(s, k)
+	nums := []int{-1, 0, 3, 5, 9, 12}
+	search(nums, 9)
 }
