@@ -3,22 +3,22 @@ package main
 import "strconv"
 
 func summaryRanges(nums []int) []string {
-	n := len(nums)
-	res := make([]string, 0, n)
+	if len(nums) == 0 {
+		return []string{}
+	}
 
-	for i := 0; i < n; i++ {
-		start := nums[i]
+	var result []string
 
-		for i < n-1 && nums[i]+1 == nums[i+1] {
-			i++
-		}
-
-		if start == nums[i] {
-			res = append(res, strconv.Itoa(start))
-		} else {
-			res = append(res, strconv.Itoa(start)+"->"+strconv.Itoa(nums[i]))
+	for left, right := 0, 0; right < len(nums); right++ {
+		if right == len(nums)-1 || nums[right+1] != nums[right]+1 {
+			if left == right {
+				result = append(result, strconv.Itoa(nums[left]))
+			} else {
+				result = append(result, strconv.Itoa(nums[left])+"->"+strconv.Itoa(nums[right]))
+			}
+			left = right + 1
 		}
 	}
 
-	return res
+	return result
 }
