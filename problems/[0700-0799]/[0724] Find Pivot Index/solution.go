@@ -1,18 +1,36 @@
 package main
 
 func pivotIndex(nums []int) int {
-	total := 0
-	for _, x := range nums {
-		total += x
+	totalSum := 0
+	for _, num := range nums {
+		totalSum += num
 	}
 
-	prefix := 0
-	for i, x := range nums {
-		if prefix == total-prefix-x {
+	prefixSum := 0
+	for i, num := range nums {
+		if totalSum-num == 2*prefixSum {
 			return i
 		}
 
-		prefix += x
+		prefixSum += num
+	}
+
+	return -1
+}
+
+func pivotIndex(nums []int) int {
+	totalSum := 0
+	for _, num := range nums {
+		totalSum += num
+	}
+
+	prefix := make([]int, len(nums)+1)
+	for i, num := range nums {
+		if totalSum-num == 2*prefix[i] {
+			return i
+		}
+
+		prefix[i+1] = prefix[i] + num
 	}
 
 	return -1
