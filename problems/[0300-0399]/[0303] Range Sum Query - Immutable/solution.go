@@ -5,9 +5,10 @@ type NumArray struct {
 }
 
 func Constructor(nums []int) NumArray {
-	prefix := make([]int, len(nums)+1)
-	for i, x := range nums {
-		prefix[i+1] = prefix[i] + x
+	prefix := make([]int, len(nums))
+
+	for i, num := range nums {
+		prefix[i+1] = prefix[i] + num
 	}
 
 	return NumArray{prefix: prefix}
