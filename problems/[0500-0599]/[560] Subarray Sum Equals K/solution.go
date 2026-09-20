@@ -9,7 +9,11 @@ func subarraySum(nums []int, k int) int {
 
 	for _, num := range nums {
 		sum += num
-		count += prefix[sum-k]
+
+		if freq, exists := prefix[sum-k]; exists {
+			count += freq
+		}
+
 		prefix[sum]++
 	}
 
