@@ -1,31 +1,32 @@
 package main
 
-func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-	res := &ListNode{}
-	head := res
-
-	for list1 != nil && list2 != nil {
-		if list1.Val <= list2.Val {
-			head.Next = list1
-			list1 = list1.Next
-		} else {
-			head.Next = list2
-			list2 = list2.Next
-		}
-
-		head = head.Next
-	}
-
-	if list1 != nil {
-		head.Next = list1
-	} else {
-		head.Next = list2
-	}
-
-	return res.Next
-}
-
 type ListNode struct {
 	Val  int
 	Next *ListNode
+}
+
+func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+	dummy := &ListNode{}
+	head := dummy
+
+	p1, p2 := list1, list2
+
+	for p1 != nil && p2 != nil {
+		if p1.Val <= p2.Val {
+			head.Next = p1
+			p1 = p1.Next
+		} else {
+			head.Next = p2
+			p2 = p2.Next
+		}
+		head = head.Next
+	}
+
+	if p1 != nil {
+		head.Next = p1
+	} else {
+		head.Next = p2
+	}
+
+	return dummy.Next
 }
