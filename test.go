@@ -1,10 +1,6 @@
 package main
 
-func isHappy(n int) bool {
-	b := []byte(n)
-
-}
-
 func main() {
-	isHappy(19)
+	dict := make(map[byte]byte)
+	dict['('] = ')'
 }
